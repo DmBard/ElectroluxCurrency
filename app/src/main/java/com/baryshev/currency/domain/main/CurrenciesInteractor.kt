@@ -12,7 +12,7 @@ class CurrenciesInteractor @Inject constructor(appDb: AppDb) {
 
     fun getCurrencies(): Single<List<MainData.Currency>> =
             Single.fromCallable { currencyDao.getAllCurrencies() }
-                .map { t: List<CurrencyEntity> ->
-                    with(t) { map { MainData.Currency(it.cc, it.name) } }
+                .map { currencies: List<CurrencyEntity> ->
+                    with(currencies) { map { MainData.Currency(it.cc, it.name) } }
                 }
 }
