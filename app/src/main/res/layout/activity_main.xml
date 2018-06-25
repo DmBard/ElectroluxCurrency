@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.main.view.MainActivity">
+
+    <TextView
+        android:id="@+id/tvUpdatingDate"
+        style="@style/ContentText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@android:color/holo_red_light"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tvFromTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Last updating"
+        tools:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tvFromTitle"
+        style="@style/ContentText.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:drawableEnd="@drawable/ic_drop_down"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="USD"/>
+
+    <TextView
+        android:id="@+id/tvFromName"
+        style="@style/ContentText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintEnd_toStartOf="@+id/etFromAmount"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFromTitle"
+        tools:text="American Dollar"/>
+
+    <EditText
+        android:id="@+id/etFromAmount"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFromName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvFromName"
+        app:layout_constraintTop_toTopOf="@+id/tvFromTitle"
+        />
+
+    <ProgressBar
+        android:id="@+id/pbExchangeLoading"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFromName"
+        tools:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFromName"
+        app:srcCompat="@drawable/ic_replace"
+        tools:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tvToTitle"
+        style="@style/ContentText.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:drawableEnd="@drawable/ic_drop_down"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:text="USD"/>
+
+    <TextView
+        android:id="@+id/tvToDesc"
+        style="@style/ContentText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintEnd_toStartOf="@+id/etToAmount"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvToTitle"
+        tools:text="American Dollar"/>
+
+    <EditText
+        android:id="@+id/etToAmount"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:enabled="false"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@+id/tvToDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvToDesc"
+        app:layout_constraintTop_toTopOf="@+id/tvToTitle"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabExchange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_refresh"
+        app:fabSize="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvToDesc"/>
+
+
+</android.support.constraint.ConstraintLayout>

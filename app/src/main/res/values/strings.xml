@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">currency</string>
+
+    <!--Error-->
+    <string name="error_common">Something went wrong</string>
+    <string name="error_network">Network unavailable</string>
+    <string name="main_snackbar_action_retry">Retry</string>
+    <string name="currencies">Currencies</string>
+</resources>
