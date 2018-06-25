@@ -15,15 +15,15 @@ import java.net.UnknownHostException
 import javax.inject.Inject
 
 @PerActivity
-class MainInteractor @Inject constructor(appDb: AppDb,
-                                         private val exchangeRepo: ExchangeRepo,
-                                         private val resourceInteractor: IResourceInteractor) {
+open class MainInteractor @Inject constructor(appDb: AppDb,
+                                              private val exchangeRepo: ExchangeRepo,
+                                              private val resourceInteractor: IResourceInteractor) {
     private val exchangeDao = appDb.exchangeDao()
     private val currencyDao = appDb.currencyDao()
-    private var exchangeKoeff: Double = UNDEFINED
-    val data = MainData.Exchange()
+    internal var exchangeKoeff: Double = UNDEFINED
+    internal val data = MainData.Exchange()
 
-    fun convert(from: String,
+    open fun convert(from: String,
                 to: String,
                 amount: Double,
                 needToRefresh: Boolean = true): Single<MainData.Exchange> {
@@ -38,21 +38,21 @@ class MainInteractor @Inject constructor(appDb: AppDb,
     private fun updateAndConvert(from: String,
                                  to: String,
                                  amount: Double): Single<MainData.Exchange> {
-        return Single.fromCallable({
-                                       val currencyFromEntity = currencyDao.findCurrencyByCc(from)
-                                       val currencyToEntity = currencyDao.findCurrencyByCc(to)
-                                       if (currencyFromEntity != null && currencyToEntity != null) {
-                                           data.from = MainData.Currency(currencyFromEntity.cc,
-                                                                         currencyFromEntity.name)
-                                           data.to = MainData.Currency(currencyToEntity.cc,
-                                                                       currencyToEntity.name)
+        return Single.fromCallable {
+            val currencyFromEntity = currencyDao.findCurrencyByCc(from)
+            val currencyToEntity = currencyDao.findCurrencyByCc(to)
+            if (currencyFromEntity != null && currencyToEntity != null) {
+                data.from = MainData.Currency(currencyFromEntity.cc,
+                                              currencyFromEntity.name)
+                data.to = MainData.Currency(currencyToEntity.cc,
+                                            currencyToEntity.name)
 
-                                           data
-                                       } else {
-                                           data.error = resourceInteractor.getString(R.string.error_common)
-                                           throw ExchangeException(data.error)
-                                       }
-                                   })
+                data
+            } else {
+                data.error = resourceInteractor.getString(R.string.error_common)
+                throw ExchangeException(data.error)
+            }
+        }
             .flatMap { exchangeRepo.getExchange() }
             .doOnSuccess { if (it.success == true) saveExchangeDataInDb(it) }
             .flatMap { exchangeFromNetworkResponse(it, from, to, amount, data) }
@@ -138,9 +138,6 @@ class MainInteractor @Inject constructor(appDb: AppDb,
     private fun convertWithoutUpdating(amount: Double): Single<MainData.Exchange> {
         return Single.fromCallable {
             data.apply {
-                isCache = false
-                error = ""
-                cacheDate = ""
                 result = (amount * exchangeKoeff).round3()
             }
         }

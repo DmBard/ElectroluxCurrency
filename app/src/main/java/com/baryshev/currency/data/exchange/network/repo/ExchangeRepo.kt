@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ExchangeRepo @Inject constructor(private val exchangeApi: ExchangeApi) {
+open class ExchangeRepo @Inject constructor(private val exchangeApi: ExchangeApi) {
 
     fun getExchange(): Single<ExchangeResponse> {
         return exchangeApi.getConvertedExchange()

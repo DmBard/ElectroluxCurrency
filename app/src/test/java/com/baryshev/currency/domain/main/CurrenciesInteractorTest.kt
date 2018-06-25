@@ -23,12 +23,10 @@ class CurrenciesInteractorTest {
         `when`(appDb.currencyDao()).thenReturn(currencyDao)
 
         interactor = CurrenciesInteractor(appDb)
-
     }
 
     @Test
     fun `getCurrencies with success`() {
-
         `when`(currencyDao.getAllCurrencies()).thenReturn(listOf(CurrencyEntity("test",
                                                                                 "test",
                                                                                 "test"),
@@ -42,7 +40,6 @@ class CurrenciesInteractorTest {
         test?.assertNoErrors()
         test?.assertComplete()
         test?.assertValueCount(1)
-        assertEquals(test?.valueCount(), 1)
         val list = test?.values()?.get(0)!!
         assert(list.isNotEmpty())
         assert(list.size == 2)
@@ -53,7 +50,6 @@ class CurrenciesInteractorTest {
 
     @Test
     fun `getCurrencies returns empty list`() {
-
         `when`(currencyDao.getAllCurrencies()).thenReturn(emptyList())
 
 
@@ -69,10 +65,8 @@ class CurrenciesInteractorTest {
 
     @Test
     fun `getCurrencies returns exception`() {
-
         val illegalStateException = IllegalStateException()
         `when`(currencyDao.getAllCurrencies()).thenThrow(illegalStateException)
-
 
         val test = interactor?.getCurrencies()?.test()
 

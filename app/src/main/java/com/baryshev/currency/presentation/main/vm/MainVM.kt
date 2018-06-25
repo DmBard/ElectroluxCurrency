@@ -20,15 +20,15 @@ class MainVM(
 ) : BaseVM() {
 
     val mainData: MutableLiveData<MainViewResult> = MutableLiveData()
-    val amountFromValidation: MutableLiveData<Boolean> = MutableLiveData()
+    val amountValidation: MutableLiveData<Boolean> = MutableLiveData()
     @SuppressLint("RxLeakedSubscription")
     fun convert(from: String, to: String, amount: String, needToRefresh: Boolean = true) {
 
         if (!amount.isDouble()) {
-            amountFromValidation.value = false
+            amountValidation.value = false
             return
         } else {
-            amountFromValidation.value = true
+            amountValidation.value = true
         }
 
         if (needToRefresh) mainData.value = MainViewResult.Progress
