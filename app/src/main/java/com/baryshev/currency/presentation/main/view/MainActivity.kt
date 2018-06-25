@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), CurrenciesDialogFragment.OnCurrencyCli
                 handleResult(it)
             }
 
-            observe(amountFromValidation) {
+            observe(amountValidation) {
                 if (it == false) {
                     snackbar = makeErrorSnackBar(mainLayout,
                                                  null,
