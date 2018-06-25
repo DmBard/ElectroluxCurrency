@@ -1,7 +1,7 @@
 package com.baryshev.currency.domain.launch
 
 import android.content.Context
-import com.baryshev.currency.common.AppDb
+import com.baryshev.currency.data.common.AppDb
 import com.baryshev.currency.data.currency.db.CurrencyEntity
 import com.baryshev.currency.di.common.PerActivity
 import com.baryshev.currency.utils.logd
@@ -12,7 +12,6 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.Reader
 import javax.inject.Inject
-
 
 const val CURRENCIES_JSON_FILE_NAME = "currencies.json"
 

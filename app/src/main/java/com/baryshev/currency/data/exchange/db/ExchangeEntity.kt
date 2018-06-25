@@ -4,9 +4,7 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "exchanges")
-data class ExchangeEntity(@PrimaryKey(autoGenerate = true)
-                          var id: Long = 0,
-                          var from: String,
-                          var to: String,
-                          var value: Double,
+data class ExchangeEntity(@PrimaryKey
+                          var name: String,
+                          var rate: Double,
                           var date: String)

@@ -7,8 +7,6 @@ import com.baryshev.currency.domain.main.CurrenciesInteractor
 import com.baryshev.currency.presentation.common.BaseVM
 import com.baryshev.currency.presentation.main.view.CurrenciesViewResult
 import com.baryshev.currency.utils.rx.IRxScheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class CurrenciesVM(private val rxScheduler: IRxScheduler,
                    private val interactor: CurrenciesInteractor,

@@ -16,7 +16,7 @@ class CurrenciesAdapter(private val clickListener: ClickListener) : ListAdapter<
     companion object {
         val DIFF_CALLBACK: DiffUtil.ItemCallback<MainData.Currency> = object : DiffUtil.ItemCallback<MainData.Currency>() {
             override fun areItemsTheSame(oldItem: MainData.Currency?,
-                                         newItem: MainData.Currency?): Boolean = oldItem?.id == newItem?.id
+                                         newItem: MainData.Currency?): Boolean = oldItem?.cc == newItem?.cc
 
             override fun areContentsTheSame(oldItem: MainData.Currency?,
                                             newItem: MainData.Currency?): Boolean = oldItem == newItem

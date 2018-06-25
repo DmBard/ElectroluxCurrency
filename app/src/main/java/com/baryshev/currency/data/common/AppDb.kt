@@ -1,4 +1,4 @@
-package com.baryshev.currency.common
+package com.baryshev.currency.data.common
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase

@@ -2,7 +2,7 @@ package com.baryshev.currency.di.common
 
 import android.arch.persistence.room.Room
 import android.content.Context
-import com.baryshev.currency.common.AppDb
+import com.baryshev.currency.data.common.AppDb
 import com.baryshev.currency.data.exchange.network.ApiService
 import com.baryshev.currency.data.exchange.network.ExchangeApi
 import com.baryshev.currency.domain.common.IResourceInteractor

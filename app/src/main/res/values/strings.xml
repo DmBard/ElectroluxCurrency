@@ -4,6 +4,9 @@
     <!--Error-->
     <string name="error_common">Something went wrong</string>
     <string name="error_network">Network unavailable</string>
-    <string name="main_snackbar_action_retry">Retry</string>
+    <string name="snackbar_action_retry">Retry</string>
     <string name="currencies">Currencies</string>
+    <string name="last_update">Last update: </string>
+    <string name="invalid_amount">Invalid amount</string>
+    <string name="clear">Clear</string>
 </resources>

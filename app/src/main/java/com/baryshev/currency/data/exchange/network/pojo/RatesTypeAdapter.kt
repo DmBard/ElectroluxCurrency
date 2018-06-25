@@ -15,13 +15,8 @@ class RatesTypeAdapter : TypeAdapter<Rates>() {
     override fun read(inj: JsonReader?): Rates {
         val gson = Gson()
         val jsonObject: JsonObject = gson.fromJson(inj, object : TypeToken<JsonObject>() {}.type)
-        val type = object : TypeToken<HashMap<String, Double>>() {}.type
-        val parsedJson: Map<String, Double> = gson.fromJson(jsonObject, type)
-        val rates = ArrayList<Rate>()
-        for (key in parsedJson.keys) {
-            rates.add(Rate(key, parsedJson[key]))
-        }
-        return Rates(rates)
-
+        val hashMapType = object : TypeToken<HashMap<String, Double>>() {}.type
+        val values: Map<String, Double> = gson.fromJson(jsonObject, hashMapType)
+        return Rates(values)
     }
 }

@@ -3,7 +3,6 @@ package com.baryshev.currency.presentation.launch.view
 import android.arch.lifecycle.ViewModelProvider
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import com.baryshev.currency.R
 import com.baryshev.currency.app
@@ -34,11 +33,12 @@ class LaunchActivity : AppCompatActivity() {
             is SimpleViewResult.Success -> startActivity(Intent(this@LaunchActivity,
                                                                 MainActivity::class.java))
             is SimpleViewResult.Error -> {
-                makeErrorSnackBar(mainLayout,
+                makeErrorSnackBar(launchLayout,
                                   simpleViewResult.error,
                                   {
                                       viewModel.init()
-                                  }, simpleViewResult.message).apply { show() }
+                                  },
+                                  simpleViewResult.message).apply { show() }
 
             }
         }

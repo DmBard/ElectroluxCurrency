@@ -39,9 +39,8 @@ class VMActivityModule {
     @ViewModelKey(MainVM::class)
     @PerActivity
     fun provideMainVM(
-            rxScheduler: IRxScheduler,
-            mainInteractor: MainInteractor,
-            resourceInteractor: IResourceInteractor): ViewModel {
-        return MainVM(rxScheduler, mainInteractor, resourceInteractor)
+        rxScheduler: IRxScheduler,
+        mainInteractor: MainInteractor): ViewModel {
+        return MainVM(rxScheduler, mainInteractor)
     }
 }

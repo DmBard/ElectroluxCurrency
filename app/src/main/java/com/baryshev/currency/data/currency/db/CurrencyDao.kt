@@ -12,8 +12,8 @@ interface CurrencyDao {
     @Query("select * from currencies")
     fun getAllCurrencies(): List<CurrencyEntity>
 
-    @Query("select * from currencies where id = :id")
-    fun findCurrencyById(id: Long): CurrencyEntity?
+    @Query("select * from currencies where cc = :name")
+    fun findCurrencyByCc(name: String): CurrencyEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCurrency(vararg note: CurrencyEntity)
@@ -23,7 +23,4 @@ interface CurrencyDao {
 
     @Delete
     fun deleteCurrency(vararg note: CurrencyEntity)
-
-    @Query("DELETE FROM currencies WHERE id = :id")
-    fun deleteCurrencyById(id: Long)
 }

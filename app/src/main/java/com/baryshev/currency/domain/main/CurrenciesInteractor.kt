@@ -1,6 +1,6 @@
 package com.baryshev.currency.domain.main
 
-import com.baryshev.currency.common.AppDb
+import com.baryshev.currency.data.common.AppDb
 import com.baryshev.currency.data.currency.db.CurrencyEntity
 import com.baryshev.currency.di.common.PerFragment
 import io.reactivex.Single
@@ -13,6 +13,6 @@ class CurrenciesInteractor @Inject constructor(appDb: AppDb) {
     fun getCurrencies(): Single<List<MainData.Currency>> =
             Single.fromCallable { currencyDao.getAllCurrencies() }
                 .map { t: List<CurrencyEntity> ->
-                    with(t) { map { MainData.Currency(it.id, it.cc, it.name) } }
+                    with(t) { map { MainData.Currency(it.cc, it.name) } }
                 }
 }

@@ -9,23 +9,20 @@ interface ExchangeDao {
     fun count(): Int
 
     @Query("select * from exchanges")
-    fun getAllExcangies(): List<ExchangeEntity>
+    fun getAllExchangies(): List<ExchangeEntity>
 
-    @Query("select * from exchanges where id = :id")
-    fun findExchangeById(id: Long): ExchangeEntity?
-
-    @Query("select * from exchanges where (`from` = :fromId and `to` = :toId)")
-    fun findExchangeByCurrencies(fromId: String, toId: String): ExchangeEntity?
+    @Query("select * from exchanges where name = :name")
+    fun findExchangeByName(name: String): ExchangeEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertExchange(vararg note: ExchangeEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertExchange(note: List<ExchangeEntity>)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateExchange(vararg note: ExchangeEntity)
 
     @Delete
     fun deleteExchange(vararg note: ExchangeEntity)
-
-    @Query("DELETE FROM exchanges WHERE id = :id")
-    fun deleteExchangeById(id: Long)
 }

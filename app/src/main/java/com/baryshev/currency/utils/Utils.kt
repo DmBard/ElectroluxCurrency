@@ -13,6 +13,6 @@ fun loge(tag: String? = "ERROR!", body: String, error: Throwable) {
     debug { Log.e(tag, body, error) }
 }
 
-fun logd(body: String, tag: String? = "DEBUG WEATHER!") {
+fun logd(body: String, tag: String? = "DEBUG!") {
     debug { Log.d(tag, body) }
 }

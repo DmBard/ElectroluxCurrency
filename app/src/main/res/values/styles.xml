@@ -9,14 +9,7 @@
         <item name="colorButtonNormal">@color/disabledAccent</item>
     </style>
 
-    <!-- Base application theme. -->
-    <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorButtonNormal">@color/disabledAccent</item>
-    </style>
+
 
     <style name="NoActionBar" parent="AppTheme">
         <item name="android:windowActionBar">false</item>
@@ -32,22 +25,12 @@
         <item name="colorButtonNormal">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
-
     <style name="ContentText">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:ellipsize">end</item>
         <item name="android:textColor">@android:color/secondary_text_light</item>
         <item name="android:maxLines">1</item>
         <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="ContentText.Small">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@android:color/tertiary_text_light</item>
     </style>
 
     <style name="ContentText.Title">
